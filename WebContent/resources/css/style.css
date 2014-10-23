@@ -1,0 +1,49 @@
+/*CSS Reset*/
+* {
+    margin:0px;
+    padding:0px;
+}
+
+body{ 
+	
+ font-size: 13px;
+  
+
+}
+
+
+#box{
+	
+	width: 1366px;
+	
+}
+
+#header {
+	
+	background-image:url("../resources/imagens/header.png");
+	width: 1366px;
+	height: 200px;
+	
+}
+
+#nav {
+	
+	width: 1366px;
+	text-align:center; 
+	align:center;
+		
+}
+
+#content {
+	    
+	width: 1366px;
+		
+		
+}
+
+	
+#footer {
+	
+	
+		
+}

@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+
+
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Consulta Produtos</title>
+	<h:outputStylesheet library="css" name="style.css"></h:outputStylesheet>
+</h:head>
+
+
+<h:body>
+
+	<div id="box">
+
+		<div id="header"></div>
+
+		<div id="nav">
+
+			<ui:include src="/pages/protected/user/menuSystem.xhtml" />
+
+		</div>
+
+
+
+		<div id="content">
+
+			<h:form id="formCONT">
+				<p:growl id="msgs" showDetail="true" />
+
+
+				<p:dataTable id="products" var="product"
+					value="#{productMB.products}"
+					style="text-align:center; align:center;width:100%;">
+
+					<f:facet name="header">
+           Produtos
+       </f:facet>
+
+
+
+
+					<p:column headerText="Name">
+
+						<h:outputText value="#{product.name}" />
+					</p:column>
+
+					<p:column headerText="Location">
+						<h:outputText value="#{product.location}" />
+					</p:column>
+
+
+					<p:column headerText="Amount">
+						<h:outputText value="#{product.amount}" />
+					</p:column>
+
+
+					<p:column headerText="Price">
+						<h:outputText value="#{product.price}" >
+						<f:convertNumber currencySymbol="R$" type="currency" maxFractionDigits="2" />
+						</h:outputText>
+					</p:column>
+
+
+					<p:column headerText="Editar">
+
+						<p:commandButton action="/pages/protected/admin/editProduct.xhtml"
+							icon="ui-icon-pencil">
+
+							<f:setPropertyActionListener target="#{productMB.product}"
+								value="#{product}"></f:setPropertyActionListener>
+
+						</p:commandButton>
+
+					</p:column>
+
+
+
+					<p:column headerText="Deletar">
+						<p:commandButton action="#{productMB.delete(product)}"
+							icon="ui-icon-trash" update=":formCONT"></p:commandButton>
+					</p:column>
+
+				</p:dataTable>
+
+				
+			</h:form>
+
+
+
+		</div>
+
+
+		<div id="footer"></div>
+
+	</div>
+
+
+</h:body>
+</html>

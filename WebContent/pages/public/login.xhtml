@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Login</title>
+	<h:outputStylesheet library="css" name="style.css"></h:outputStylesheet>
+</h:head>
+
+<h:body>
+
+<div id="box">
+
+  <div id="header"> 
+  
+  
+  
+  
+  </div>
+  
+  
+  
+  
+  <div id="content"> 
+  
+  
+	<form method="post" action="j_security_check" style="padding-left:553px; text-align:center; align:center;" >
+
+		<p:panel header="Login" style="width:250px;">
+
+			<h:panelGrid id="grid" style="margin:0 auto;" >
+
+			<h:outputLabel value="Usuário:" style="font-weight:bold;" />
+		    <input id="username" type="text" name="j_username" />
+		    
+		    <br/>
+
+			<h:outputLabel value="Senha:" style="font-weight:bold" />                    
+            <input id="password" type="password" name="j_password" />
+
+			</h:panelGrid>
+			
+			<br/>
+
+             <input type="submit" value="Login" />
+
+		</p:panel>
+	</form>
+
+  
+  </div>
+  
+  <div id="footer">
+  
+
+    
+  </div>
+  
+</div>
+
+
+</h:body>
+
+
+</html>

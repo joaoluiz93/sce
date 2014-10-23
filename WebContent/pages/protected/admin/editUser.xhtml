@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Alterando Usuário</title>
+	<h:outputStylesheet library="css" name="style.css"></h:outputStylesheet>
+</h:head>
+
+<h:body>
+
+	<div id="box">
+
+		<div id="header"></div>
+
+		<div id="nav">
+
+			<ui:include src="/pages/protected/user/menuSystem.xhtml" />
+
+		</div>
+
+		<div id="content">
+
+			<h:form>
+				<p:growl id="msgs" showDetail="false" />
+
+				<p:panel header="Alterando Usuário"
+					style="text-align:center; align:center;width:100%;">
+
+					<h:inputHidden value="#{userMB.user2.name}" required="true"
+						requiredMessage="Campo necessário." />
+
+					<h:panelGrid columns="2" style="margin:0 auto;">
+
+						<h:outputLabel value="Usuário" />
+						<p:inputText value="#{userMB.user2.name}" required="true"
+							requiredMessage="Campo necessário." disabled="true" />
+
+
+
+
+						<h:outputLabel for="pw1" value="Senha: " />
+						<p:password id="pw1" value="#{userMB.user2.password}"
+							feedback="true" inline="true" requiredMessage="Campo necessário."
+							match="pw2" required="true"
+							validatorMessage="As senhas devem ser correspondentes e possuir no mínimo 5 dígitos."
+							weakLabel="Fraca." goodLabel="Média." strongLabel="Forte."
+							promptLabel="Digite a senha." label="Senha">
+							<f:validateLength minimum="5" maximum="20"></f:validateLength>
+						</p:password>
+
+
+
+						<h:outputLabel for="pw2" value="Confirme a Senha" />
+						<p:password value="#{userMB.user2.password}" id="pw2"
+							required="true" requiredMessage="Campo necessário."
+							label="Confirme a Senha"
+							validatorMessage="As senhas devem ser correspondentes e possuir no mínimo 5 dígitos.">
+							<f:validateLength minimum="5" maximum="20"></f:validateLength>
+
+						</p:password>
+
+
+						<p:selectOneMenu value="#{userMB.roleName}" required="true"
+							requiredMessage="Campo necessário.">
+
+							<f:selectItem itemValue="#{userMB.user2.role.name}"
+								itemLabel="#{userMB.user2.role.name}" />
+
+							<f:selectItems value="#{userMB.roles}" var="role"
+								itemValue="#{role.name}" itemLabel="#{role.name}" />
+
+						</p:selectOneMenu>
+
+
+					</h:panelGrid>
+
+					<br />
+					<br />
+
+					<p:commandButton value="Alterar" action="#{userMB.update}"
+						update="@form" />
+
+
+				</p:panel>
+
+
+			</h:form>
+
+		</div>
+
+
+		<div id="footer"></div>
+
+	</div>
+
+
+</h:body>
+
+</html>

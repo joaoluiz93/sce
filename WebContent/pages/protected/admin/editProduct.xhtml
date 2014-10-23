@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Alterando Produto</title>
+	<h:outputStylesheet library="css" name="style.css"></h:outputStylesheet>
+</h:head>
+
+<h:body>
+
+	<div id="box">
+
+		<div id="header"></div>
+
+		<div id="nav">
+
+			<ui:include src="/pages/protected/user/menuSystem.xhtml" />
+
+		</div>
+
+		<div id="content">
+
+			<h:form>
+                <p:growl id="msgs" showDetail="false" />
+                
+				<p:panel header="Alterando Produto"
+					style="text-align:center; align:center;width:100%;">
+
+					<h:inputHidden value="#{productMB.product.id}" />
+
+					<h:panelGrid columns="2" style="margin:0 auto;">
+
+						<h:outputLabel value="Nome" />
+						<p:inputText value="#{productMB.product.name}" required="true"
+							requiredMessage="Campo necessário." />
+
+
+						<h:outputLabel value="Localização" />
+						<p:inputText value="#{productMB.product.location}" required="true"
+							requiredMessage="Campo necessário." />
+
+
+						<h:outputLabel value="Quantidade" />
+						<p:inputText value="#{productMB.product.amount}" required="true"
+							requiredMessage="Campo necessário." />
+
+
+						<h:outputLabel value="Preço: R$" />
+						<p:inputText value="#{productMB.product.price}" required="true"
+							requiredMessage="Campo necessário." type="currency"
+							converterMessage="Insira o valor corretamente.">
+						</p:inputText>
+
+
+					</h:panelGrid>
+
+					<br />
+					<br />
+
+					<p:commandButton value="Editar" action="#{productMB.update}" update="@form"/>
+
+
+				</p:panel>
+
+
+
+			</h:form>
+
+
+		</div>
+
+
+		<div id="footer"></div>
+
+	</div>
+
+
+</h:body>
+
+</html>

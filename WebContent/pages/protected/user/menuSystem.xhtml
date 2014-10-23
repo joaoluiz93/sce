@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition>
+
+
+	<h:form id="formMenuSystem">
+
+		<p:menubar style="text-align:center; align:center;width:100%;">
+
+			<p:submenu label="Administrar usuários" icon="ui-icon-pencil"
+				rendered="#{userMB.AAdmin}">
+				<p:menuitem value="Consultar"
+					url="/pages/protected/admin/users.xhtml"
+					icon="ui-icon-transfer-e-w" />
+				<p:menuitem value="Cadastrar"
+					url="/pages/protected/admin/createUser.xhtml" icon="ui-icon-disk" />
+			</p:submenu>
+
+			<p:submenu label="Administrar produtos" icon="ui-icon-pencil">
+				<p:menuitem value="Consultar"
+					url="/pages/protected/user/products.xhtml"
+					icon="ui-icon-transfer-e-w" />
+				<p:menuitem value="Cadastrar"
+					url="/pages/protected/user/createProduct.xhtml" icon="ui-icon-disk" />
+			</p:submenu>
+
+			<f:facet name="options">
+				<p:commandButton value="Logout" icon="ui-icon-extlink"
+					action="#{userMB.logout}" />
+			</f:facet>
+
+		</p:menubar>
+		
+	</h:form>
+	
+	<ui:insert name="loading" >
+	<p:ajaxStatus onstart="PF('statusDialog').show();"
+				onsuccess="PF('statusDialog').hide();" />
+
+			<p:dialog modal="true" widgetVar="statusDialog" header="Status"
+				draggable="false" closable="false" resizable="false" showHeader="false">
+				<p:graphicImage library="imagens" name="loading.gif"
+					style="border:0" />
+			</p:dialog>
+</ui:insert>		
+
+	
+</ui:composition>
+</html>
